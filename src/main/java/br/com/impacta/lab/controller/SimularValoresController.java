@@ -58,24 +58,26 @@ public class SimularValoresController {
 				.filter(p -> p.getCode() == codigoProduto).findFirst().get();
 				
 				paymentTypes.stream().forEach(p -> {
-					payment = p.getDescription();
-					product = resultProduct.getDescription();
-					productValue = resultProduct.getValue();
+					if(p.getCode() == codTipoPagamento){
+						payment = p.getDescription();
+						product = resultProduct.getDescription();
+						productValue = resultProduct.getValue();
 
-					switch(codTipoPagamento) {
-						case 1: 
-							productValueAfterDiscount = (productValue - (productValue * 0.10));
-							break;
-						case 2: 
-							productValueAfterDiscount = (productValue - (productValue * 0.05));
-							break;
-						case 3:
-							productValueAfterDiscount = productValue;
-							break;
-						case 4: 
-							productValueAfterDiscount = (productValue * 0.10) + productValue;
-							break;
-						default: break;
+						switch(codTipoPagamento) {
+							case 1: 
+								productValueAfterDiscount = (productValue - (productValue * 0.10));
+								break;
+							case 2: 
+								productValueAfterDiscount = (productValue - (productValue * 0.05));
+								break;
+							case 3:
+								productValueAfterDiscount = productValue;
+								break;
+							case 4: 
+								productValueAfterDiscount = (productValue * 0.10) + productValue;
+								break;
+							default: break;
+						}
 					}
 				});
 				message = product + " sendo pago " + payment + " custará " + productValueAfterDiscount + " reais";
