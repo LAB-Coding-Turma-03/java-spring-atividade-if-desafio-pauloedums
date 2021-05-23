@@ -33,4 +33,7 @@ public class Product {
     }
 
     
+    public String resume(String product, String payment, double productValueAfterDiscount){
+        return product + " sendo pago " + payment + " custará " + productValueAfterDiscount + " reais";
+    }
 }

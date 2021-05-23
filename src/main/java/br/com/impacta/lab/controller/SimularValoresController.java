@@ -80,7 +80,7 @@ public class SimularValoresController {
 						}
 					}
 				});
-				message = product + " sendo pago " + payment + " custará " + productValueAfterDiscount + " reais";
+				message = resultProduct.resume(product, payment, productValueAfterDiscount);
 			}
 		}
 		/* condicional para um código de produto inválido */
